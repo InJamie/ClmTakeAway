@@ -1,0 +1,28 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: on
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "http://localhost:8080"
+            allowed-headers: "*"
+            allowed-methods: "*"
+            max-age: 3600
+
+#      globalcors:
+#        corsConfigurations:
+#          '[/**]':
+#            allowedOrigins: "*"
+#            allowedMethods: "*"
+
+product-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.example.configuration.NacosWeightedRule
+
